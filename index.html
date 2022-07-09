@@ -36,6 +36,17 @@ body {
   gap: 60px;
 }
 
+.demo-wrapper p {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.demo-wrapper code {
+  font-size: 14px;
+  font-family: menlo, monospace;
+}
+
 .demo {
   width: 5px;
   height: 5px;
@@ -91,14 +102,14 @@ body {
       <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
         <circle r="10px" id="circle" fill="rebeccapurple"></circle>
       </svg>
-      <p>Transitioning</p>
+      <p><code>transition</code></p>
     </div>
     
     <div class="demo-wrapper transition will-change">
       <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
         <circle r="10px" id="circle" fill="rebeccapurple"></circle>
       </svg>
-      <p>Transitioning with will-change: transform</p>
+      <p><code>transition</code> with <code>will-change: transform</code></p>
     </div>
     
   </div>
@@ -108,14 +119,14 @@ body {
       <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
         <circle r="10px" id="circle" fill="rebeccapurple"></circle>
       </svg>
-      <p>Animating</p>
+      <p><code>animation</code></p>
     </div>
     
     <div class="demo-wrapper animation will-change">
       <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
         <circle r="10px" id="circle" fill="rebeccapurple"></circle>
       </svg>
-      <p>Animating with will-change: transform</p>
+      <p><code>animation</code> with <code>will-change: transform</code></p>
     </div>
     
   </div>
