@@ -12,6 +12,21 @@ body {
   flex-flow: column;
 }
 
+.demos {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.demo-line {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .demo-wrapper {
   display: flex;
   align-items: center;
@@ -40,12 +55,28 @@ body {
 }
 
 .demo-wrapper.animation .demo {
-  animation: demo 4s infinite;
+  animation: demo-reverse 2s forwards;
+}
+
+.demo-wrapper.animation.scale .demo {
+  animation: demo 2s forwards;
 }
 
 @keyframes demo {
-  50% {
+  from {
+    transform: scale(0);
+  }
+  to {
     transform: scale(25);
+  }
+}
+
+@keyframes demo-reverse {
+  from {
+    transform: scale(25);
+  }
+  to {
+    transform: scale(0);
   }
 }
 </style>
@@ -54,43 +85,55 @@ body {
 <h1>Chromium SVG transform issue</h1>
 
 <div class="demos">
-
-  <div class="demo-wrapper transition">
-    <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
-      <circle r="10px" id="circle" fill="rebeccapurple"></circle>
-    </svg>
-    <p>Transitioning</p>
-  </div>
+  <div class="demo-line">
   
-  <div class="demo-wrapper transition will-change">
-    <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
-      <circle r="10px" id="circle" fill="rebeccapurple"></circle>
-    </svg>
-    <p>Transitioning with will-change: transform</p>
+    <div class="demo-wrapper transition">
+      <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+        <circle r="10px" id="circle" fill="rebeccapurple"></circle>
+      </svg>
+      <p>Transitioning</p>
+    </div>
+    
+    <div class="demo-wrapper transition will-change">
+      <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+        <circle r="10px" id="circle" fill="rebeccapurple"></circle>
+      </svg>
+      <p>Transitioning with will-change: transform</p>
+    </div>
+    
   </div>
+  <div class="demo-line">
   
-  <div class="demo-wrapper animation">
-    <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
-      <circle r="10px" id="circle" fill="rebeccapurple"></circle>
-    </svg>
-    <p>Animating</p>
+    <div class="demo-wrapper animation">
+      <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+        <circle r="10px" id="circle" fill="rebeccapurple"></circle>
+      </svg>
+      <p>Animating</p>
+    </div>
+    
+    <div class="demo-wrapper animation will-change">
+      <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+        <circle r="10px" id="circle" fill="rebeccapurple"></circle>
+      </svg>
+      <p>Animating with will-change: transform</p>
+    </div>
+    
   </div>
-  
 </div>
 
 <script>
-const demos = document.querySelectorAll('.demo-wrapper.transition');
+const demos = document.querySelectorAll('.demo-wrapper');
 
 window.setTimeout(() => {
   demos.forEach(demo => {
     demo.classList.toggle('scale');
-  }
+  });
 }, 200);
 
 window.setInterval(() => {
   demos.forEach(demo => {
     demo.classList.toggle('scale');
-  }
+  });
 }, 3000);
 </script>
 
