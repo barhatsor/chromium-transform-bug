@@ -12,8 +12,7 @@ body {
   flex-flow: column;
 }
 
-.demo-el-wrapper,
-.demo-el-wrapper-1 {
+.demo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,51 +21,76 @@ body {
   gap: 60px;
 }
 
-.demo-el {
+.demo {
   width: 5px;
   height: 5px;
   transform: scale(0);
+}
+
+.demo-wrapper.transition .demo {
   transition: 2s transform;
 }
 
-.demo-el-wrapper.scale .demo-el,
-.demo-el-wrapper-1.scale .demo-el {
+.demo-wrapper.transition.scale .demo {
   transform: scale(25);
+}
+
+.demo-wrapper.will-change .demo {
+  will-change: transform;
+}
+
+.demo-wrapper.animation .demo {
+  animation: demo 4s infinite;
+}
+
+@keyframes demo {
+  50% {
+    transform: scale(25);
+  }
 }
 </style>
 </head>
 <body>
 <h1>Chromium SVG transform issue</h1>
 
-<div style="display: flex; gap: 60px;">
+<div class="demos">
 
-  <div class="demo-el-wrapper">
-    <svg class="demo-el" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+  <div class="demo-wrapper transition">
+    <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
       <circle r="10px" id="circle" fill="rebeccapurple"></circle>
     </svg>
-    <p>Without will-change: transform</p>
+    <p>Transitioning</p>
   </div>
   
-  <div class="demo-el-wrapper-1">
-    <svg style="will-change: transform;" class="demo-el" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+  <div class="demo-wrapper transition will-change">
+    <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
       <circle r="10px" id="circle" fill="rebeccapurple"></circle>
     </svg>
-    <p>With will-change: transform</p>
+    <p>Transitioning with will-change: transform</p>
+  </div>
+  
+  <div class="demo-wrapper animation">
+    <svg class="demo" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+      <circle r="10px" id="circle" fill="rebeccapurple"></circle>
+    </svg>
+    <p>Animating</p>
   </div>
   
 </div>
 
 <script>
+const demos = document.querySelectorAll('.demo-wrapper.transition');
+
 window.setTimeout(() => {
-  document.querySelector('.demo-el-wrapper').classList.toggle('scale');
-  document.querySelector('.demo-el-wrapper-1').classList.toggle('scale');
+  demos.forEach(demo => {
+    demo.classList.toggle('scale');
+  }
 }, 200);
 
 window.setInterval(() => {
-  
-  document.querySelector('.demo-el-wrapper').classList.toggle('scale');
-  document.querySelector('.demo-el-wrapper-1').classList.toggle('scale');
-  
+  demos.forEach(demo => {
+    demo.classList.toggle('scale');
+  }
 }, 3000);
 </script>
 
