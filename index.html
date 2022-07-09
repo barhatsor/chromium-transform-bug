@@ -139,9 +139,12 @@ h1 {
 
 <script>
 const demos = document.querySelectorAll('.demo-wrapper');
-demos.forEach(demo => {
+
+window.setTimeout(() => {
+  demos.forEach(demo => {
     demo.classList.toggle('scale');
   });
+}, 200);
 
 window.setInterval(() => {
   demos.forEach(demo => {
