@@ -31,7 +31,7 @@ body {
 
 .demo-el-wrapper.scale .demo-el,
 .demo-el-wrapper-1.scale .demo-el {
-  transform: scale(35);
+  transform: scale(25);
 }
 </style>
 </head>
@@ -41,15 +41,15 @@ body {
 <div style="display: flex; gap: 60px;">
 
   <div class="demo-el-wrapper">
-    <svg class="demo-el" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.92 40.21">
-      <circle cx="20.81" cy="20.81" r="1.06" id="circle" stroke-width="20px" stroke="rgb(23, 191, 99)"></circle>
+    <svg class="demo-el" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+      <circle r="10px" id="circle" fill="rebeccapurple"></circle>
     </svg>
     <p>Without will-change: transform</p>
   </div>
   
   <div class="demo-el-wrapper-1">
-    <svg style="will-change: transform;" class="demo-el" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.92 40.21">
-      <circle cx="20.81" cy="20.81" r="1.06" id="circle" stroke-width="20px" stroke="rgb(23, 191, 99)"></circle>
+    <svg style="will-change: transform;" class="demo-el" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+      <circle r="10px" id="circle" fill="rebeccapurple"></circle>
     </svg>
     <p>With will-change: transform</p>
   </div>
