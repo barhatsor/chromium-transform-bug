@@ -140,11 +140,11 @@ h1 {
 <script>
 const demos = document.querySelectorAll('.demo-wrapper');
 
-window.setTimeout(() => {
+window.onload = () => {
   demos.forEach(demo => {
     demo.classList.toggle('scale');
   });
-}, 3000);
+};
 
 window.setInterval(() => {
   demos.forEach(demo => {
